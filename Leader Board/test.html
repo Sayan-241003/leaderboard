@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Update</title>
+    <style>
+        /* Add some basic styles for the table */
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dynamic Table</h2>
+    <table id="dynamic-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table body content will be dynamically populated by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Sample data for the table
+        const data = [
+            { name: 'Player A', score: 1000 },
+            { name: 'Player B', score: 8000 },
+            { name: 'Player C', score: 600 }
+            // Add more data as needed
+        ];
+
+        // Function to update the table dynamically
+        function updateTable() {
+            const tableBody = document.querySelector('#dynamic-table tbody');
+            tableBody.innerHTML = ''; // Clear existing table content
+
+            // Iterate through the data and populate the table
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}. ${item.name}</td>
+                    <td>${item.score} points</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initial table update
+        updateTable();
+    </script>
+</body>
+</html>
